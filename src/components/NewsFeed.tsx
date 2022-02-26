@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Stack from 'react-bootstrap/Stack';
-import { RESPONSE } from '../mock/mockResponse2';
+import { RESPONSE } from '../mock/mockResponse3';
 import { NewsItem } from '../types';
 import NewsCard from './NewsCard';
 import './NewsFeed.css';
@@ -16,8 +16,8 @@ const NewsFeed = (props: Props) => {
 
   return (
     <Stack gap={3}>
-      {newsItems.map((newsItem) => (
-        <NewsCard {...newsItem} />
+      {newsItems.map((newsItem, index) => (
+        <NewsCard key={`news-item${index}`} {...newsItem} />
       ))}
     </Stack>
   );

@@ -15,3 +15,7 @@ a.news-card-title {
 .news-card-img {
   padding-bottom: 2rem;
 }
+
+div.news-card-date {
+  font-size: 0.8rem;
+}
