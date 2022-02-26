@@ -1,12 +1,12 @@
 .nav.feed-nav {
   display: flex;
-  padding: 2rem 0;
+  padding-top: 2rem;
   gap: 2rem;
 }
 
 .nav-link.feed-nav-link {
   padding: 0;
-  color: #000;
+  color: rgb(0, 0, 0);
   font-weight: 600;
 }
 

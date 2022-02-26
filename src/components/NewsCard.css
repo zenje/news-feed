@@ -4,5 +4,14 @@
 }
 
 .card-body.news-card-body {
-  padding: 1rem 0;
+  padding: 2rem 0;
+}
+
+a.news-card-title {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+
+.news-card-img {
+  padding-bottom: 2rem;
 }

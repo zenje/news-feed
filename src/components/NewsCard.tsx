@@ -1,28 +1,37 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
+import { NewsItem } from '../types';
 import './NewsCard.css';
 
-type Props = {};
-
-const NewsCard = (props: Props) => {
+const NewsCard = ({
+  author,
+  title,
+  description,
+  url,
+  urlToImage,
+  publishedAt,
+  content,
+}: NewsItem) => {
   return (
     <Card className="news-card">
       <Card.Body className="news-card-body">
-        <Card.Title>Card Title</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-        <Card.Text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. A cras
-          semper auctor neque vitae tempus quam pellentesque. Morbi quis commodo
-          odio aenean. Ultrices gravida dictum fusce ut. Lectus quam id leo in
-          vitae turpis massa sed. Pellentesque id nibh tortor id aliquet. Arcu
-          dui vivamus arcu felis bibendum. Enim lobortis scelerisque fermentum
-          dui faucibus in ornare quam. Tincidunt vitae semper quis lectus. Ac
-          auctor augue mauris augue. Cras fermentum odio eu feugiat. Nisi
-          scelerisque eu ultrices vitae.
-        </Card.Text>
-        <Card.Link href="#">Card Link</Card.Link>
-        <Card.Link href="#">Another Link</Card.Link>
+        {urlToImage && (
+          <Card.Link href={url}>
+            <Card.Img
+              variant="top"
+              src={urlToImage}
+              className="news-card-img"
+            />
+          </Card.Link>
+        )}
+        <Card.Link href={url} className="news-card-title">
+          <Card.Title>{title}</Card.Title>
+        </Card.Link>
+        <Card.Text>{description}</Card.Text>
+        {author && (
+          <Card.Subtitle className="mb-2">{author}</Card.Subtitle>
+        )}
+        <Card.Subtitle className="mb-2 text-muted">{publishedAt}</Card.Subtitle>
       </Card.Body>
     </Card>
   );
