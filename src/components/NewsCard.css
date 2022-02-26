@@ -1,0 +1,8 @@
+.card.news-card {
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.card-body.news-card-body {
+  padding: 1rem 0;
+}
