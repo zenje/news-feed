@@ -37,7 +37,7 @@ const NewsCard = ({
     <Card className="news-card">
       <Card.Body className="news-card-body">
         {urlToImage && (
-          <Card.Link href={url}>
+          <Card.Link href={url} target="_blank">
             <Card.Img
               variant="top"
               src={urlToImage}
@@ -45,7 +45,7 @@ const NewsCard = ({
             />
           </Card.Link>
         )}
-        <Card.Link href={url} className="news-card-title">
+        <Card.Link href={url} target="_blank" className="news-card-title">
           <Card.Title>{title}</Card.Title>
         </Card.Link>
         <Card.Text>{description}</Card.Text>

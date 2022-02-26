@@ -1,0 +1,17 @@
+.pagination-link {
+  white-space: nowrap;
+}
+
+.prev-link {
+  text-align: left;
+}
+
+.next-link {
+  text-align: right;
+}
+
+button.page-button {
+  text-transform: uppercase;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
