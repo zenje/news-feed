@@ -3,12 +3,14 @@ import Stack from 'react-bootstrap/Stack';
 import { RESPONSE } from '../mock/mockResponse3';
 import { NewsItem } from '../types';
 import NewsCard from './NewsCard';
-import './NewsFeed.css';
 import Pagination from './Pagination';
 
-type Props = {};
+type Props = {
+  fetchUrlFn: (...args: any[]) => string;
+};
 
 const getNewsItems = (
+  fetchUrlFn: (...args: any[]) => string,
   setNewsItems: (newsItems: NewsItem[]) => void,
   apiKey: string | null,
   page: number = 1
@@ -18,7 +20,7 @@ const getNewsItems = (
     const response = RESPONSE;
     setNewsItems(response.articles);
   } else {
-    const url = `https://newsapi.org/v2/top-headlines?language=en&pageSize=10&page=${page}&apiKey=${apiKey}`;
+    const url = fetchUrlFn(page, apiKey);
     fetch(url)
       .then((response) => {
         if (!response.ok) {
@@ -45,14 +47,14 @@ const getNewsItems = (
   }
 };
 
-const NewsFeed = (props: Props) => {
+const NewsFeed = ({ fetchUrlFn }: Props) => {
   const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
   const [page, setPage] = useState<number>(1);
 
   useEffect(() => {
     let apiKey = process.env.REACT_APP_API_KEY || null;
-    getNewsItems(setNewsItems, apiKey, page);
-  }, [page]);
+    getNewsItems(fetchUrlFn, setNewsItems, apiKey, page);
+  }, [fetchUrlFn, page]);
 
   return (
     <Stack gap={3}>
