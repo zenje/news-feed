@@ -8,6 +8,7 @@ import { MdIosShare as ShareIcon } from 'react-icons/md';
 import { NewsItem } from '../types';
 import './NewsCard.css';
 
+const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 const TODAY = new Date();
 
 const isToday = (date: Date) => {
@@ -18,14 +19,20 @@ const isToday = (date: Date) => {
   );
 };
 
-const getDisplayDate = (isoDate: string) => {
-  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  const date: Date = new Date(isoDate);
-  return formatInTimeZone(
-    date,
-    timeZone,
-    isToday(date) ? 'h:MM a zzz' : 'MMMM d, yyyy h:MM a zzz'
-  );
+const formatDate = (isoDate: string) => {
+  if (isoDate) {
+    try {
+      const date: Date = new Date(isoDate);
+      return formatInTimeZone(
+        date,
+        timeZone,
+        isToday(date) ? 'h:MM a zzz' : 'MMMM d, yyyy h:MM a zzz'
+      );
+    } catch (e) {
+      console.log(`Unable to parse date ${isoDate}`, e);
+    }
+  }
+  return null;
 };
 
 const NewsCard = ({
@@ -37,6 +44,7 @@ const NewsCard = ({
   publishedAt,
   content,
 }: NewsItem) => {
+  const formattedPublishedDate: string | null = formatDate(publishedAt);
   return (
     <Card className="news-card">
       <Card.Body className="news-card-body">
@@ -56,9 +64,9 @@ const NewsCard = ({
         <Row>
           <Col sm={9} xs={7}>
             {author && <Card.Subtitle className="mb-2">{author}</Card.Subtitle>}
-            {publishedAt && (
+            {formattedPublishedDate && (
               <Card.Subtitle className="mb-2 text-muted news-card-date">
-                {getDisplayDate(publishedAt)}
+                {formattedPublishedDate}
               </Card.Subtitle>
             )}
           </Col>
