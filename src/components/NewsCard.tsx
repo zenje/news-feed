@@ -24,7 +24,7 @@ const getDisplayDate = (isoDate: string) => {
   return formatInTimeZone(
     date,
     timeZone,
-    isToday(date) ? 'h:MM a zzz' : 'MMMM d, YYYY h:MM a zzz'
+    isToday(date) ? 'h:MM a zzz' : 'MMMM d, yyyy h:MM a zzz'
   );
 };
 
