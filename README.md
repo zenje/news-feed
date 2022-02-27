@@ -36,3 +36,4 @@ Open [http://localhost:3000](http://localhost:3000) to view app in development m
 - React, TypeScript
 - [react-bootstrap](https://react-bootstrap.github.io/)
 - [date-fns-tz](https://www.npmjs.com/package/date-fns-tz)
+- [react-icons](https://react-icons.github.io/react-icons)

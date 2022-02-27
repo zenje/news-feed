@@ -19,3 +19,11 @@ a.news-card-title {
 div.news-card-date {
   font-size: 0.8rem;
 }
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  padding: 0.2rem;
+  align-items: center;
+  justify-content: flex-end;
+}

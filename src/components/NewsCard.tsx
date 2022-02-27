@@ -1,6 +1,10 @@
 import { formatInTimeZone } from 'date-fns-tz';
 import React from 'react';
 import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import { BiBookmarkHeart as BookmarkIcon } from 'react-icons/bi';
+import { MdIosShare as ShareIcon } from 'react-icons/md';
 import { NewsItem } from '../types';
 import './NewsCard.css';
 
@@ -49,12 +53,20 @@ const NewsCard = ({
           <Card.Title>{title}</Card.Title>
         </Card.Link>
         <Card.Text>{description}</Card.Text>
-        {author && <Card.Subtitle className="mb-2">{author}</Card.Subtitle>}
-        {publishedAt && (
-          <Card.Subtitle className="mb-2 text-muted news-card-date">
-            {getDisplayDate(publishedAt)}
-          </Card.Subtitle>
-        )}
+        <Row>
+          <Col sm={9} xs={7}>
+            {author && <Card.Subtitle className="mb-2">{author}</Card.Subtitle>}
+            {publishedAt && (
+              <Card.Subtitle className="mb-2 text-muted news-card-date">
+                {getDisplayDate(publishedAt)}
+              </Card.Subtitle>
+            )}
+          </Col>
+          <Col sm={3} xs={5} className="actions">
+            <ShareIcon size="1.5rem" color="grey" />
+            <BookmarkIcon size="1.5rem" color="grey" />
+          </Col>
+        </Row>
       </Card.Body>
     </Card>
   );
